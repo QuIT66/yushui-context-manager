@@ -1,0 +1,41 @@
+# yushui-context-manager —— bundle 层装配（可选启用方式 A）
+#
+# 用法：把本包加进 profile 的 package.json 依赖，并在 `dsh.profile.bundles` 里加入
+# `yushui-context-manager`，启动时下面这几行会被自动插入 ⇒ **该 profile 的所有会话都带这几个工具**，
+# 与选哪个预设无关。
+#
+# 不想改动 bundles（或只想给某一个预设用）就走方式 B：把 profile-snippet.yml 里的块
+# 手工贴进自己的预设声明。两种方式**不要同时用**，否则同名工具会被两个 fiber 各注册一次。
+#
+# 行名一律是**包名 + 子路径**，没有任何绝对路径：换机器、换用户名都不用改。
+# 每行的 config 都是可选的；不写就用插件内置默认（见 README 的「配置项」一节）。
+- insert:
+    - id: memory
+      name: yushui-context-manager/memory
+      config: {}
+      # 例：
+      #   memoryDir: ~/memory/mmr        # 记忆条目目录（一条一文件）
+      #   scarDir: ~/memory/scar         # 淘汰留档目录
+      #   charLimit: 4000                # 全库总字符上限（写入侧拒绝，不静默截断）
+      #   userName: 用户                 # 注入块与快照里给用户说的话贴的称呼
+
+    - id: project-index
+      name: yushui-context-manager/project-index
+      config: {}
+      # 例：
+      #   indexFile: ~/.dsh/data/project-index/PROJECT-INDEX.md
+      #   intro: '以下是本机项目位置索引（本会话开始时注入一次）：'
+
+    - id: subagent-blocker
+      name: yushui-context-manager/subagent-blocker
+      config: {}
+      # 读 <会话 cwd>/.dsh/profile.yml，每个会话往 ~/.dsh/staging/subagent-blocker.log 记一行。
+
+    - id: skill-search
+      name: yushui-context-manager/skill-search
+      config: {}
+
+    - id: time-line
+      name: yushui-context-manager/time
+      config: {}
+      # 例：zone: 本机时区

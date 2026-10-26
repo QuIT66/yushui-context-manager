@@ -1,0 +1,23 @@
+# 方式 B：手工贴进 profile 的 cordis.patch.yml（或某个预设的 agent.cordis.yml）。
+# 与 bundle 方式（cordis.patch.yml + dsh.profile.bundles）二选一，不要同时用。
+#
+#   · 贴进 profile 层 ⇒ 该 profile 的所有会话都有这些工具（与预设无关）。
+#   · 贴进某个预设  ⇒ 只有选中该预设的会话有。
+- insert:
+    - id: memory
+      name: yushui-context-manager/memory
+      config:
+        memoryDir: ~/memory/mmr
+        scarDir: ~/memory/scar
+        charLimit: 4000
+        userName: 用户
+
+    - id: project-index
+      name: yushui-context-manager/project-index
+      config:
+        indexFile: ~/.dsh/data/project-index/PROJECT-INDEX.md
+
+    - id: time-line
+      name: yushui-context-manager/time
+      config:
+        zone: 本机时区

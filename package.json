@@ -1,0 +1,49 @@
+{
+  "name": "yushui-context-manager",
+  "version": "1.0.0",
+  "description": "给 DeepSeek Harness 用的上下文管理插件组：按需注入的长期记忆、项目位置索引、每轮时间行、按需技能检索，以及子代理扇出预算闸。全部配置驱动，不绑定任何人的路径或数据。",
+  "type": "module",
+  "exports": {
+    "./memory": "./plugins/memory/memory-tool.mjs",
+    "./project-index": "./plugins/project-index/project-index.mjs",
+    "./subagent-blocker": "./plugins/subagent-blocker/subagent-blocker.mjs",
+    "./skill-search": "./plugins/skill-search/skill-search.mjs",
+    "./time": "./plugins/time/time-line.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "plugins",
+    "cordis.patch.yml",
+    "profile-snippet.yml",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "!**/*.bak-*"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "context",
+    "agent",
+    "memory",
+    "skills"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuIT66/yushui-context-manager.git"
+  },
+  "homepage": "https://github.com/QuIT66/yushui-context-manager#readme",
+  "bugs": {
+    "url": "https://github.com/QuIT66/yushui-context-manager/issues"
+  }
+}
